@@ -4,7 +4,7 @@ from datetime import datetime
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
-
+import json
 import os
 import gspread
 from google.oauth2.service_account import Credentials
@@ -28,8 +28,10 @@ SCOPES = [
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds = Credentials.from_service_account_file(
-    "credentials.json",
+creds_dict = json.loads(os.environ["GOOGLE_CREDS"])
+
+creds = Credentials.from_service_account_info(
+    creds_dict,
     scopes=SCOPES
 )
 

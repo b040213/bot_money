@@ -70,7 +70,7 @@ def parse(text, user, group_id):
             amount = -float(raw_amount)
         
         return {
-            "date": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "date": datetime.now().strftime("%m/%d %H:%M"),
             "item": item,
             "amount": amount,
             "user": user,
